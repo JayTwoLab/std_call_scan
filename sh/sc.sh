@@ -9,13 +9,17 @@
 set -euo pipefail
 
 # === 경로 설정 ===
-PROJ_ROOT="/home/j2/workspace/dev/github/jaytwo-library"
-SCAN_BIN="${PROJ_ROOT}/sh/std_call_scan"   # std_call_scan 실행 파일
-SRC_DIR="${PROJ_ROOT}/j2_library/src"
+#  스크립트 구동 전에 경로를 설정한다. 
+
+PROJ_ROOT="/home/j2/workspace/dev/github/jaytwo-library" # 검사하려는 프로젝트 경로
+SRC_DIR="${PROJ_ROOT}/j2_library/src" # 검사하려는 프로젝트 *.cpp 가 있는 경로
 BUILD_DIR="${PROJ_ROOT}/build-clang"  # clang++로 만든 빌드
 
-OUT_CSV="${HOME}/scan_report.csv"
-FAIL_LIST="${HOME}/scan_failures.txt"
+STD_PRJ_ROOT="/home/j2/workspace/dev/std_call_scan" # 검색 프로젝트 경로
+SCAN_BIN="${STD_PRJ_ROOT}/build/std_call_scan"   # std_call_scan 실행 파일
+
+OUT_CSV="${HOME}/scan_report.csv" # csv 결과 파일 경로 
+FAIL_LIST="${HOME}/scan_failures.txt" # 실패 결과 파일 경로 
 
 # === 전제 조건 점검 ===
 if [[ ! -x "$SCAN_BIN" ]]; then
@@ -89,3 +93,6 @@ echo
 echo "[완료] 총 ${count_total}개 파일 처리 / 성공 ${count_ok} / 실패 ${count_fail}"
 echo "[결과] CSV  : $OUT_CSV"
 echo "[결과] 실패 : $FAIL_LIST (비었으면 모든 파일 성공)"
+
+
+
