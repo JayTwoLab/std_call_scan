@@ -5,9 +5,11 @@
 set -euo pipefail
 
 # === 프로젝트/경로 설정 ===
-PROJ_ROOT="/home/j2/workspace/dev/github/jaytwo-library"
+PROJ_ROOT="/home/j2/workspace/dev/github/jaytwo-library" # j2 라이브러리 (또는 검색할 프로젝트)
 BUILD_DIR="${PROJ_ROOT}/build-clang"     # clang++ 전용 빌드 폴더
-SCAN_SCRIPT="${PROJ_ROOT}/sh/sc.sh"      # 앞서 만든 스캔 스크립트
+
+STD_PRJ_ROOT="/home/j2/workspace/dev/std_call_scan"
+SCAN_SCRIPT="${STD_PRJ_ROOT}/sh/sc.sh"      # 스캔 스크립트
 
 # === 도구 확인 ===
 need() { command -v "$1" >/dev/null 2>&1 || { echo "[오류] '$1' 명령을 찾을 수 없습니다."; exit 1; }; }
@@ -68,3 +70,4 @@ echo "[정보] 스캔 시작 (sc.sh)"
 "${SCAN_SCRIPT}"
 
 echo "[완료] 빌드+스캔 완료"
+
