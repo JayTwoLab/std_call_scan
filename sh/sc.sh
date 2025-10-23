@@ -9,9 +9,10 @@
 set -euo pipefail
 
 # === 경로 설정 ===
-SCAN_BIN="${HOME}/std_call_scan"   # std_call_scan 실행 파일
-SRC_DIR="/home/j2/workspace/dev/github/jaytwo-library/j2_library/src"
-BUILD_DIR="/home/j2/workspace/dev/github/jaytwo-library/build-clang"  # clang++로 만든 빌드
+PROJ_ROOT="/home/j2/workspace/dev/github/jaytwo-library"
+SCAN_BIN="${PROJ_ROOT}/sh/std_call_scan"   # std_call_scan 실행 파일
+SRC_DIR="${PROJ_ROOT}/j2_library/src"
+BUILD_DIR="${PROJ_ROOT}/build-clang"  # clang++로 만든 빌드
 OUT_CSV="${HOME}/scan_report.csv"
 FAIL_LIST="${HOME}/scan_failures.txt"
 
