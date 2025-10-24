@@ -99,20 +99,12 @@ This will produce an executable (e.g., `build/std_call_scan`).
 
 ## Usage
 
-```bash
-# Analyze one or more .cpp files and write CSV to a file
-./build/std_call_scan --csv-header path/to/a.cpp path/to/b.cpp > report.csv
-```
-
-Common filters:
+### Linux
 
 ```bash
-# Only std:: calls
-./build/std_call_scan --only-std src/**/*.cpp > std_calls.csv
-
-# Only std::filesystem:: calls
-./build/std_call_scan --name-prefix std::filesystem:: src/**/*.cpp > fs_calls.csv
+./sh/build_scan_env.sh
 ```
+ 
 
 ### CSV Schema
 
