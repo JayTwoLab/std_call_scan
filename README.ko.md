@@ -32,6 +32,8 @@ CSV는 `stdout`으로 출력되며 파일로 리다이렉트하여 저장할 수
 
 ## 빌드
 
+### Linux
+
 ```bash
 # 프로젝트 루트에서
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
