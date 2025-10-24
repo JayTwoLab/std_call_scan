@@ -8,7 +8,7 @@
 - (2) 같은 경로에 압축을 해제한다.
    - `C:\llvm-package` 에 해제했다고 가정한다. 
 - (3) 다음과 같이 환경 변수를 설정한다.
-   - `PATH` : `C:\llvm-package\bin` (bin 경로)
+   - `PATH` : `C:\llvm-package\bin` 
    - `LLVM_DIR` : `C:\llvm-package\lib\cmake\llvm`
    - `Clang_DIR` : `C:\llvm-package\lib\cmake\clang`
 - (4) Visual Studio 명령창에서 `cmake` 실행 (`ninja` 사전 설치할 것)
