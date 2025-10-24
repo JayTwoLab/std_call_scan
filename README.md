@@ -32,6 +32,8 @@ The tool prints a CSV to `stdout`, which you can redirect to a file.
 
 ## Build
 
+### Linux
+
 ```bash
 # from the project root
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
