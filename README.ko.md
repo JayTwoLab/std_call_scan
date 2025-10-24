@@ -85,6 +85,7 @@ cmake --build build -j
 ## 사용법
 
 ```bash
+# 스크립트를 실행하기 전에 build_scan_env.sh의 변수 편집
 ./sh/build_scan_env.sh
 ```
  
