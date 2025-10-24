@@ -102,6 +102,7 @@ This will produce an executable (e.g., `build/std_call_scan`).
 ### Linux
 
 ```bash
+# Edit variable in build_scan_env.sh, before execute script
 ./sh/build_scan_env.sh
 ```
  
