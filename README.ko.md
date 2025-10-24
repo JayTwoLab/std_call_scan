@@ -7,6 +7,8 @@ CSV는 `stdout`으로 출력되며 파일로 리다이렉트하여 저장할 수
 
 > 컬럼: `file,line,col,kind,qualified-name,noexcept,signature,callee-source`
 
+<br />
+
 ## 특징
 
 - 자유 함수, 멤버 함수, 생성자, 연산자 호출까지 폭넓게 탐지
@@ -16,6 +18,8 @@ CSV는 `stdout`으로 출력되며 파일로 리다이렉트하여 저장할 수
   - `--name-prefix <prefix>` — 정규화 이름 접두로 필터(예: `std::filesystem::`)
   - `--csv-header` — CSV 헤더 1행 출력
 - 기본적으로 시스템 헤더 호출은 제외(필요 시 소스의 매처를 수정)
+
+<br />
 
 ## 요구 사항
 
@@ -30,6 +34,8 @@ CSV는 `stdout`으로 출력되며 파일로 리다이렉트하여 저장할 수
     sudo apt install clang libclang-dev llvm-dev libedit-dev libffi-dev libxml2-dev zlib1g-dev libzstd-dev
     ```
 
+<br />
+
 ## 빌드
 
 ### Linux
@@ -41,6 +47,40 @@ cmake --build build -j
 ```
 
 생성된 실행 파일은 보통 `build/std_call_scan` 입니다.
+
+### Windows
+
+- (1) 다음 싸이트에서 LLVM 과 clang 을 다운로드 한다.
+   - https://github.com/vovkos/llvm-package-windows
+   - 파일 (최신 버전 설치. `amd64`:64비트, `msvc17`:VS2022 )
+      - llvm-x.x.x-windows-`amd64`-`msvc17`-XXX.7z
+      - clang-x.x.x-windows-`amd64`-`msvc17`-XXX.7z
+- (2) 같은 경로에 압축을 해제한다.
+   - `C:\llvm-package` 에 해제했다고 가정한다. 
+- (3) 다음과 같이 환경 변수를 설정한다.
+   - `PATH` : `C:\llvm-package\bin` 
+   - `LLVM_DIR` : `C:\llvm-package\lib\cmake\llvm`
+   - `Clang_DIR` : `C:\llvm-package\lib\cmake\clang`
+- (4) Visual Studio 명령창에서 `cmake` 실행 (`ninja` 사전 설치할 것)
+  ```
+    mkdir build && cd build
+  
+    cmake -G Ninja ^
+  -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_C_COMPILER=clang-cl ^
+  -DCMAKE_CXX_COMPILER=clang-cl ^
+  -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL ^
+  -DLLVM_DIR="C:/llvm-package/lib/cmake/llvm" ^
+  -DClang_DIR="C:/llvm-package/lib/cmake/clang" ^
+  ..
+  ```
+   - 한 줄 명령: 
+   `cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DLLVM_DIR="C:/llvm-package/lib/cmake/llvm" -DClang_DIR="C:/llvm-package/lib/cmake/clang" ..`
+- (5) 빌드 실행: `ninja -v`
+ 
+
+
+<br />
 
 ## 사용법
 
@@ -75,6 +115,8 @@ cmake --build build -j
 > - 기본적으로 시스템 헤더는 제외됩니다. 포함하려면 `scanner.cpp`의 매처를 수정하십시오.
 > - `noexcept` 결과는 Clang이 인지한 함수 타입을 기준으로 하며, 코드를 실행하는 것이 아닙니다.
 
+<br />
+
 ## 예시
 
 ```bash
@@ -82,10 +124,12 @@ cmake --build build -j
 ./build/std_call_scan --csv-header scanner.cpp
 ```
 
+<br />
+
 ## 라이선스
 
 [`LICENSE`](LICENSE) 파일을 참고하십시오.
 
 ---
 
-*생성 시각: 2025-10-22 15:07:30*
+
