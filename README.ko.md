@@ -85,20 +85,9 @@ cmake --build build -j
 ## 사용법
 
 ```bash
-# 하나 이상의 .cpp 파일을 분석하고 CSV를 파일로 저장
-./build/std_call_scan --csv-header path/to/a.cpp path/to/b.cpp > report.csv
+./sh/build_scan_env.sh
 ```
-
-자주 쓰는 필터:
-
-```bash
-# std:: 호출만
-./build/std_call_scan --only-std src/**/*.cpp > std_calls.csv
-
-# std::filesystem:: 호출만
-./build/std_call_scan --name-prefix std::filesystem:: src/**/*.cpp > fs_calls.csv
-```
-
+ 
 ### CSV 스키마
 
 - **file**: 호출 위치를 포함하는 소스 파일 경로
